@@ -6,6 +6,7 @@
     4. [With State and Timer](#c-with-state-and-timer)
 2. [Templating](#templating)
     1. [If](#t-if)
+    2. [If-Else](#t-if-else)
 
 <a name="components"></a>
 ## Components
@@ -102,6 +103,24 @@ class Joke extends React.Component<{answer: boolean}> {
         <h1>Knock Knock!</h1>
         { this.props.answer &&
         <h2>Who is there??</h2>
+        }
+      </div>
+    );
+  }
+}
+```
+
+<a name="t-if-else"></a>
+### If-Else (Regular Ternary Operator)
+```typescript
+class Joke extends React.Component<{angry: boolean}> {
+  render() {
+    return (
+      <div>
+        <h1>Knock Knock!</h1>
+        { this.props.angry
+          ? <h1>Leave me alone!!</h1>
+          : <h2>Yes...?</h2>
         }
       </div>
     );

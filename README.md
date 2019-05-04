@@ -2,7 +2,8 @@
 1. [Components](#components)
     1. [Basic](#c-basic)
     2. [With Props](#c-with-props)
-    3. [With State](#c-with-state)
+    3. [With State and Button](#c-with-state-and-button)
+    3. [With State and Timer](#c-with-state-and-timer)
 
 <a name="components"></a>
 ## Components
@@ -27,8 +28,35 @@ class HelloMessage extends React.Component<{userName: string}>{
 }
 ```
 
-<a name="c-with-state"></a>
-### With State (and Props)
+<a name="c-with-state-and-button"></a>
+### With State and Button
+```typescript
+class Ticker extends React.Component<{start: number, modifier: number}, {counter: number}> {
+  private timer!: NodeJS.Timeout;
+
+  constructor(props: {start: number, modifier: number}) {
+    super(props);
+    this.state = {counter: props.start};
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(): void {
+    this.setState((state, props) => ({counter: state.counter + props.modifier}))
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Actually, I can count: { this.state.counter }</h1>
+        <button onClick={this.onClick}>Add {this.props.modifier}!</button>
+      </div>
+    );
+  }
+}
+```
+
+<a name="c-with-state-and-timer"></a>
+### With State and Timer
 ```typescript
 class Ticker extends React.Component<{start: number, modifier: number}, {ticker: number}> {
   private timer!: NodeJS.Timeout;

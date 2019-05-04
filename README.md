@@ -11,7 +11,8 @@
     4. [Inline List](#t-inline-list)
 3. [Forms](#forms)
     1. [Input](#f-input)
-    2. [TextArea](#t-textarea)
+    2. [TextArea](#f-textarea)
+    3. [Select or Dropdown](#f-select)
 
 <a name="components"></a>
 ## Components
@@ -221,4 +222,33 @@ class TextAreaSync extends React.Component<{}, {text: string}> {
 }
 ```
 
+<a name="f-select"></a>
+### Select or Dropdown
+```typescript
+class FavoriteColor extends React.Component<{}, {selected: string}> {
+  constructor(props: {}) {
+    super(props)
+    this.state = {selected: 'red'}
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(event: FormEvent<HTMLSelectElement>) {
+    this.setState({selected: event.currentTarget.value});
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{ this.state.selected }</h1>
+        <select value={this.state.selected} onChange={this.onChange}>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="black">Black is not a color.</option>
+          </select>
+      </div>
+    );
+  }
+}
+```
 

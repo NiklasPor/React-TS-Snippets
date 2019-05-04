@@ -7,6 +7,8 @@
 2. [Templating](#templating)
     1. [If](#t-if)
     2. [If-Else](#t-if-else)
+    3. [List](#t-list)
+    4. [Inline List](#t-inline-list)
 
 <a name="components"></a>
 ## Components
@@ -122,6 +124,40 @@ class Joke extends React.Component<{angry: boolean}> {
           ? <h1>Leave me alone!!</h1>
           : <h2>Yes...?</h2>
         }
+      </div>
+    );
+  }
+}
+```
+
+<a name="t-list"></a>
+### Inline List
+```typescript
+class Numbers extends React.Component<{numbers: number[]}> {
+  render() {
+    return (
+      this.renderNumbers()
+    );
+  }
+
+  renderNumbers() {
+    return this.props.numbers.map((n) =>
+      <span> { n } </span>
+    );
+  }
+}
+```
+
+<a name="t-inline-list"></a>
+### Inline List
+```typescript
+class Numbers extends React.Component<{numbers: number[]}> {
+  render() {
+    return (
+      <div>
+        { this.props.numbers.map((n) => 
+          <span> { n } </span>
+        )}
       </div>
     );
   }

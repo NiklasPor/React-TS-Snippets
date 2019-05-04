@@ -3,7 +3,9 @@
     1. [Basic](#c-basic)
     2. [With Props](#c-with-props)
     3. [With State and Button](#c-with-state-and-button)
-    3. [With State and Timer](#c-with-state-and-timer)
+    4. [With State and Timer](#c-with-state-and-timer)
+2. [Templating](#templating)
+    1. [If](#t-if)
 
 <a name="components"></a>
 ## Components
@@ -81,6 +83,26 @@ class Ticker extends React.Component<{start: number, modifier: number}, {ticker:
     return (
       <div>
         <h1>Actually, I can count: { this.state.ticker}</h1>
+      </div>
+    );
+  }
+}
+```
+
+<a name="templating"></a>
+## Templating
+
+<a name="t-if"></a>
+### If
+```typescript
+class Joke extends React.Component<{answer: boolean}> {
+  render() {
+    return (
+      <div>
+        <h1>Knock Knock!</h1>
+        { this.props.answer &&
+        <h2>Who is there??</h2>
+        }
       </div>
     );
   }

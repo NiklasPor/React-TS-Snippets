@@ -30,17 +30,17 @@ class HelloMessage extends React.Component<{userName: string}>{
 <a name="c-with-state"></a>
 ### With State (and Props)
 ```typescript
-class Ticker extends React.Component<{start: number}, {ticker: number}> {
+class Ticker extends React.Component<{start: number, modifier: number}, {ticker: number}> {
   private timer!: NodeJS.Timeout;
 
-  constructor(props: Readonly<{start: number}>) {
+  constructor(props: {start: number, modifier: number}) {
     super(props);
     this.state = {ticker: props.start};
   }
 
   componentDidMount() {
     this.timer = setInterval(
-      () => this.setState({ticker: this.state.ticker + 1}),
+      () => this.setState((state, props) => ({ticker: state.ticker + props.modifier})),
       250
     )
   }

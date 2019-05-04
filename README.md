@@ -149,7 +149,7 @@ class Numbers extends React.Component<{numbers: number[]}> {
 ```
 
 <a name="t-inline-list"></a>
-### Inline List
+### List
 ```typescript
 class Numbers extends React.Component<{numbers: number[]}> {
   render() {

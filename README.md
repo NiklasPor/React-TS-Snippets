@@ -9,6 +9,9 @@
     2. [If-Else](#t-if-else)
     3. [List](#t-list)
     4. [Inline List](#t-inline-list)
+3. [Forms](#forms)
+    1. [Input](#f-input)
+    2. [TextArea](#t-textarea)
 
 <a name="components"></a>
 ## Components
@@ -163,3 +166,59 @@ class Numbers extends React.Component<{numbers: number[]}> {
   }
 }
 ```
+
+<a name="forms"></a>
+## Forms
+
+
+<a name="f-input"></a>
+### Input
+```typescript
+class InputTextSync extends React.Component<{}, {text: string}> {
+  constructor(props: {}) {
+    super(props)
+    this.state = {text: 'Start Text'}
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(event: FormEvent<HTMLInputElement>) {
+    this.setState({text: event.currentTarget.value});
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{ this.state.text }</h1>
+        <input value={this.state.text} onChange={this.onChange}></input>
+      </div>
+    );
+  }
+}
+```
+
+<a name="f-textarea"></a>
+### TextArea
+```typescript
+class TextAreaSync extends React.Component<{}, {text: string}> {
+  constructor(props: {}) {
+    super(props)
+    this.state = {text: 'Start Text'}
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(event: FormEvent<HTMLTextAreaElement>) {
+    this.setState({text: event.currentTarget.value});
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{ this.state.text }</h1>
+        <textarea value={this.state.text} onChange={this.onChange}></textarea>
+      </div>
+    );
+  }
+}
+```
+
+

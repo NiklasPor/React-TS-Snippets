@@ -142,7 +142,7 @@ class Numbers extends React.Component<{numbers: number[]}> {
 
   renderNumbers() {
     return this.props.numbers.map((n) =>
-      <span> { n } </span>
+      <span key={n.toString()}> { n } </span>
     );
   }
 }
@@ -156,7 +156,7 @@ class Numbers extends React.Component<{numbers: number[]}> {
     return (
       <div>
         { this.props.numbers.map((n) => 
-          <span> { n } </span>
+          <span key={n.toString()}> { n } </span>
         )}
       </div>
     );

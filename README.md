@@ -4,6 +4,7 @@
     2. [With Props](#c-with-props)
     3. [With State and Button](#c-with-state-and-button)
     4. [With State and Timer](#c-with-state-and-timer)
+    5. [With Child Components](#c-children)
 2. [Templating](#templating)
     1. [If](#t-if)
     2. [If-Else](#t-if-else)
@@ -58,6 +59,63 @@ class Ticker extends React.Component<{start: number, modifier: number}, {counter
       <div>
         <h1>Actually, I can count: { this.state.counter }</h1>
         <button onClick={this.onClick}>Add {this.props.modifier}!</button>
+      </div>
+    );
+  }
+}
+```
+
+<a name="c-children"></a>
+### Child Components or Containment
+```typescript
+class App extends React.Component {
+  render() {
+    return (
+    <div>
+      <Sidebar>
+        <UserMenu/>
+        <GeneralMenu/>
+      </Sidebar>
+    </div>
+    );
+  }
+}
+
+class Sidebar extends React.Component {
+  render() {
+    return (
+      <div>
+        { this.props.children }
+      </div>
+    );
+  }
+}
+
+class GeneralMenu extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>General</h2>
+        <ul>
+          <li>Messages</li>
+          <li>Groups</li>
+          <li>Configuration</li>
+        </ul>
+      </div>
+    );
+  }
+}
+
+class UserMenu extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>User</h2>
+        <ul>
+          <li>Name</li>
+          <li>Birthday</li>
+          <li>Country</li>
+        </ul>
       </div>
     );
   }
